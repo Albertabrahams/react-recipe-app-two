@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 // import { ExternalLink } from "react-external-link";
@@ -16,9 +17,9 @@ export const Nav = styled.div`
 `;
 export const Hamburger = styled.div`
   display: none;
- 
+  /* Bir öğeyi gizleme özelliği  Öğe gizlenecek ve sayfa, öğe orada değilmiş gibi alttaki stiller yok gibi görüntülenecektir: */
   flex-direction: column;
- 
+  /*çizgiler üstüste hamburger gibi */
   cursor: pointer;
   span {
     height: 4px;
@@ -36,6 +37,7 @@ export const Hamburger = styled.div`
 
 export const MenuLink = styled(Link)`
   /* navbardaki 3 kelime ... tek tek about vs yazanların özellikleri */
+
   padding: 1rem 2rem;
   cursor: pointer;
   text-align: center;
@@ -86,6 +88,7 @@ export const Logo = styled(Link)`
   text-decoration: none;
   font-weight: 800;
   font-size: 2rem;
+
   i {
     font-family: "Girassol", sans-serif;
   }
