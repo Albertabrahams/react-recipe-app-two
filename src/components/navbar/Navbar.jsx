@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Nav, Logo, Hamburger, MenuLink, Menu } from "./NavbarStyles";
-
+//  import { ExternalLink } from "react-external-link";
 // import { GiHamburgerMenu } from "react-icons/gi";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const [github, setGithub] = useState("");
   return (
     <Nav>
-      <Logo to="/home">
-        <i>{"<Clarusway>"}</i>
-        <span>recipe</span>
+      <Logo to="/home"
+      onClick={() => setIsOpen(false)}>
+        <i>{"Albert's "}</i>
+        <span>Recipes</span>
       </Logo>
       <Hamburger onClick={() => setIsOpen(!isOpen)}>
         {/* hamburger o anda ne durumdaysa, tıklandığında tersi olacak, false ise true..ve sonra Menu bunu style a props la gönder */}
@@ -30,25 +31,37 @@ const Navbar = () => {
           About
         </MenuLink>
         {/* hamburger tıklanınca open açılıyor, about a basınca false kapanmalı */}
-        <MenuLink to="/github">Githubb</MenuLink>
+        <MenuLink
+          onClick={() =>
+            setGithub(
+              (window.location.href =
+                "https://github.com/Albertabrahams")
+            )
+          }
+          to={github}
+          target="_blank"
+        >
+          Github
+        </MenuLink>
         {/* React-router, Tek Sayfalık Uygulama için bir yönlendirme sistemidir. Tüm
         rotaların sayfanızda tanımlanması ve uygulamanızın içinde kapsüllenmesi
         gerekir */}
         {/* <ExtrnlLink href="https://github.com/orgs/clarusway/dashboard">
           Github
         </ExtrnlLink> */}
-
+        {/* alttaki gibi stil sayfasında a tag inden türemiş A ile de bu işi yapabiliriz */}
         {/* <A href="https://github.com" target="_blank">
           Github
         </A> */}
         <MenuLink
           onClick={() => setIsOpen(!isOpen)}
-          
-        
+          // onMouseUp= fare düğmesini bırakırken
+          onMouseUp={() => sessionStorage.clear()}
           to="/"
         >
           Logout
         </MenuLink>
+        {/* sessionStorage.clear()=> bunu yazmazsak sessionStorage temizlenmiyor, logout yapınca direk girilebiliyor */}
       </Menu>
     </Nav>
   );
